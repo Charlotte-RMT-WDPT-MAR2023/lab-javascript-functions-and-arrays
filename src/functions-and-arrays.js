@@ -12,18 +12,19 @@ const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard',
 
 
 function findLongestWord(word) {
-  let longest = word[0]
-
-for (let i = 1; i < word.length; i++)
-{
-  if (
-    word[i].length > longest.length
-  )
-  {longest = word[i]}
-}
   
-return longest
+  if (word.length=== 0) {return null}
+  
+  let longest = word[0]
+for (let i = 1; i < word.length; i++)
+{ 
+  if ( word[i].length > longest.length  )
+  {longest = word[i]}
+
 }
+     return longest
+}
+
 
 // Iteration #3: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
@@ -43,6 +44,10 @@ return sum;
 // Iteration #3.1 Bonus:
 
 function sum(Array) {
+  for (let i = 0; i < Array.length; i++)  {
+    if (typeof Array[i] === "object"){
+    throw Error('unsupported data type')}}
+  
   let sum = 0;
   for (let i = 0; i < Array.length; i++)  {
     if (typeof Array[i] === "string")
@@ -58,6 +63,8 @@ return sum;
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
 function averageNumbers(avg) {
+  if (avg.length=== 0) {return null}
+
   let sum = 0;
    for (let i = 0; i < avg.length; i++)  {
      sum += avg[i]
@@ -71,6 +78,9 @@ function averageNumbers(avg) {
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
 function averageWordLength(avg) {
+
+  if (avg.length=== 0) {return null}
+
   let sum = 0;
    for (let i = 0; i < avg.length; i++)  {
      sum += avg[i].length
@@ -80,6 +90,8 @@ function averageWordLength(avg) {
 
 // Bonus - Iteration #4.1
 function avg(Array) {
+  if (Array.length=== 0) {return null}
+
   let sum = 0;
    for (let i = 0; i < Array.length; i++)   {
     if (typeof Array[i] === "string")
@@ -109,9 +121,11 @@ const wordsUnique = [
   'bring'
 ];
 
+
 function uniquifyArray(list) {
+  if (list.length=== 0) {return null}
+
   let newArray = [] 
-  console.log (list.length)
   for (let i = 0 ; i < list.length; i++)
   {if (list.includes(list[i], i+1) === false)
     {newArray.push(list[i])}
@@ -125,11 +139,15 @@ function uniquifyArray(list) {
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
 function doesWordExist(list, search) {
+
+  if (list.length=== 0) {return null}
+
   for (let i = 0 ; i < list.length; i++)
   {if (list.includes(search) === true)
-    {return "true"}
+    {return true}
   else if (list.includes(search) === false)
-  {return "false"}
+  {return false}
+  else {return null}
 }}
 
 
@@ -205,6 +223,32 @@ function greatestProduct(arr) {
     return greatest
   }
 
+
+  
+function greatestProductOfDiagonals(arr) {
+
+  let greatest = 0
+  
+  //top left to bottom right
+  
+  for (var i=0; i < arr.length-3; i++) {
+    for (var j=0; j < arr[i].length-3; j++) { let product = arr[i][j] * arr[i+1][j+1] * arr[i+2][j+2] * arr[i+3][j+3]
+        if (product > greatest)
+    {greatest = product} ;
+    }}
+    
+    
+    //top right to bottom left
+  
+  for (var i=0; i < arr.length-3; i++) {
+    for (var j= arr[i].length-1; j >= arr[i].length-2; j--) { let product = arr[i][j] * arr[i+1][j-1] * arr[i+2][j-2] * arr[i+3][j-3]
+        if (product > greatest)
+    {greatest = product} ;
+    }}
+  
+    return greatest
+    
+  }
 
 
 
